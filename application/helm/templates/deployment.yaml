@@ -16,10 +16,10 @@ spec:
         app: {{ .Chart.Name }}
     spec:
       containers:
-        env:
+        - resources: {}
+          env:
           - name: PORT
             value: {{ .Values.containers.containerPort | quote }}
-        - resources: {}
           terminationMessagePath: /dev/termination-log
           name: {{ .Chart.Name }}
           volumeMounts:
