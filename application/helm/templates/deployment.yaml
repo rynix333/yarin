@@ -22,15 +22,15 @@ spec:
             value: {{ .Values.containers.containerPort | quote }}
           terminationMessagePath: /dev/termination-log
           name: {{ .Chart.Name }}
-          volumeMounts:
-          - name: index-html
-            mountPath: /tmp/html # this will mount the html.index file to it application location
           ports:
             - containerPort: {{ .Values.containers.containerPort }}
               protocol: TCP
           imagePullPolicy: IfNotPresent
 # Update with the image you build in part 1
-          image: {{ .Values.containers.image }}:{{ .Values.containers.tag }}
+          image: {{ .Values.containers.image }}:{{ .Values.containers.tag }} 
+          volumeMounts:
+          - name: index-html
+            mountPath: /tmp/html # this will mount the html.index file to it application location
           readinessProbe:
             httpGet:
               path: /health/readiness # this check the application url path
