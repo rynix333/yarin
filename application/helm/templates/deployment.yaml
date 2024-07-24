@@ -58,7 +58,7 @@ spec:
           configMap:
             name: '{{ .Chart.Name }}-html'
             defaultMode: 420
-      strategy:
+    strategy:
       type: RollingUpdate
         rollingUpdate:
           maxUnavailable: 25%
